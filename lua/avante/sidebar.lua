@@ -1636,12 +1636,7 @@ function Sidebar:render()
     end, function(_) end)
   end)
 
-  self.result:map("n", "q", function()
-    api.nvim_exec_autocmds("User", { pattern = Llm.CANCEL_PATTERN })
-    self:close()
-  end)
-
-  self.result:map("n", "<Esc>", function()
+  self.result:map("n", "<C-F13>", function()
     api.nvim_exec_autocmds("User", { pattern = Llm.CANCEL_PATTERN })
     self:close()
   end)

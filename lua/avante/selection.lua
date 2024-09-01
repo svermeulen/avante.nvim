@@ -431,9 +431,6 @@ function Selection:create_editing_input()
   vim.keymap.set("n", "<C-F13>", function()
     self:close_editing_input()
   end, { buffer = bufnr })
-  vim.keymap.set("n", "q", function()
-    self:close_editing_input()
-  end, { buffer = bufnr })
 
   local quit_id, close_unfocus
   quit_id = api.nvim_create_autocmd("QuitPre", {
