@@ -646,11 +646,11 @@ function Sidebar:render_input()
 
   local code_file_fullpath = api.nvim_buf_get_name(self.code.bufnr)
   local code_filename = fn.fnamemodify(code_file_fullpath, ":t")
-  local header_text = string.format("󱜸 Chat with %s %s (<Tab>: switch focus)", icon, code_filename)
+  local header_text = string.format("󱜸 Chat with %s %s", icon, code_filename)
 
   if self.code.selection ~= nil then
     header_text = string.format(
-      "󱜸 Chat with %s %s(%d:%d) (<Tab>: switch focus)",
+      "󱜸 Chat with %s %s(%d:%d)",
       icon,
       code_filename,
       self.code.selection.range.start.line,
@@ -922,15 +922,15 @@ function Sidebar:refresh_winids()
     end
   end
 
-  for _, winid in ipairs(winids) do
-    local buf = api.nvim_win_get_buf(winid)
-    vim.keymap.set({ "n", "i" }, "<Tab>", function()
-      switch_windows()
-    end, { buffer = buf, noremap = true, silent = true })
-    vim.keymap.set({ "n", "i" }, "<S-Tab>", function()
-      reverse_switch_windows()
-    end, { buffer = buf, noremap = true, silent = true })
-  end
+  -- for _, winid in ipairs(winids) do
+  --   local buf = api.nvim_win_get_buf(winid)
+  --   vim.keymap.set({ "n", "i" }, "<Tab>", function()
+  --     switch_windows()
+  --   end, { buffer = buf, noremap = true, silent = true })
+  --   vim.keymap.set({ "n", "i" }, "<S-Tab>", function()
+  --     reverse_switch_windows()
+  --   end, { buffer = buf, noremap = true, silent = true })
+  -- end
 end
 
 function Sidebar:resize()
