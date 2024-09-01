@@ -428,7 +428,12 @@ function Selection:create_editing_input()
 
   vim.keymap.set("i", Config.mappings.submit.insert, submit_input, { buffer = bufnr, noremap = true, silent = true })
   vim.keymap.set("n", Config.mappings.submit.normal, submit_input, { buffer = bufnr, noremap = true, silent = true })
+
   vim.keymap.set("n", "<C-F13>", function()
+    self:close_editing_input()
+  end, { buffer = bufnr })
+
+  vim.keymap.set("n", "<Esc>", function()
     self:close_editing_input()
   end, { buffer = bufnr })
 
